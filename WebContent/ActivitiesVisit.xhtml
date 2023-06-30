@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body>
+<h:form>
+	<h1>Activities List :</h1>
+    <h:panelGroup>
+        <table class="table">
+            <ui:repeat var="p" varStatus="s" value="#{beanManager.allActivities}">
+                <tr>
+                    <td><h:outputText value="#{p.id}" /></td>
+                    <td><h:outputText value="#{p.titre}" /></td>
+                    <td><h:outputText value="#{p.nature}" /></td>
+                    <td><h:outputText value="#{p.year}" /></td>
+                    <td><h:outputText value="#{p.description}" /></td>
+                    <td><h:outputText value="#{p.site}" /></td>
+                </tr>
+            </ui:repeat>
+        </table>
+    </h:panelGroup>
+</h:form>
+</body>
+</html>

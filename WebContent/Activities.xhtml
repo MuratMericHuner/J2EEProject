@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body>
+<h:form>
+	<h1>Activities List :</h1>
+    <h:panelGroup>
+        <table class="table">
+        <tr> 
+            	<td><h:outputText value="Id :" /></td>
+                    <td><h:outputText value="Title :" /></td>
+                    <td><h:outputText value="Nature :" /></td>
+                    <td><h:outputText value="Year :" /></td>
+                    <td><h:outputText value="Description :" /></td>
+                    <td><h:outputText value="Site :" /></td>
+                    <td><h:outputText value="Delete Activity :" /></td>
+                    <td><h:outputText value="Modify Activity:" /></td>
+            	</tr>
+            <ui:repeat var="p" varStatus="s" value="#{beanManager.allActivities}">
+                <tr>
+                    <td><h:outputText value="#{p.id}" /></td>
+                    <td><h:outputText value="#{p.titre}" /></td>
+                    <td><h:outputText value="#{p.nature}" /></td>
+                    <td><h:outputText value="#{p.year}" /></td>
+                    <td><h:outputText value="#{p.desc}" /></td>
+                    <td><h:outputText value="#{p.siteweb}" /></td>
+                    <td><h:commandButton value="Delete"
+                            action="#{beanManager.deleteActivity(p.id)}"
+                            styleClass="btn btn-success btn-xs">
+                            <f:ajax execute="@this" render="@form" />
+                        </h:commandButton></td>
+                        <td><h:commandButton value="Modify"
+                            action="#{beanManager.ModifyActivity(p.id)}"
+                            styleClass="btn btn-success btn-xs">
+                            <f:ajax execute="@this" render="@form" />
+                        </h:commandButton></td>
+                </tr>
+            </ui:repeat>
+        </table>
+    </h:panelGroup>
+    <h:commandButton value="Add Activity"
+                            action="#{beanManager.newActivity()}"
+                            styleClass="btn btn-success btn-xs">
+                            <f:ajax execute="@this" render="@form" />
+                        </h:commandButton>
+</h:form>
+</body>
+</html>

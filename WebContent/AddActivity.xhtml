@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body>
+    <h:form>
+        <h1>Activity Form</h1>
+    <div class="form-group">
+    		<h:outputText value="Title :" /> <br/>
+        <h:inputText id="titre" value="#{beanManager.titre}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="30" />
+        </h:inputText> <br/>
+        <h:outputText value="Nature :" /> <br/>
+         <h:inputText id="nature" value="#{beanManager.nature}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="30" />
+        </h:inputText> <br/>
+        <h:outputText value="Year :" /> <br/>
+         <h:inputText id="year" value="#{beanManager.year}"
+            styleClass="form-control">
+            <f:convertNumber type ="number"/>
+            <f:validateLength minimum="4" maximum="4" />
+        </h:inputText> <br/>
+        <h:outputText value="Site :" /> <br/>
+         <h:inputText id="site" value="#{beanManager.siteweb}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="30" />
+        </h:inputText> <br/>
+        <h:outputText value="Description :" /> <br/>
+         <h:inputText id="desc" value="#{beanManager.desc}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="200" />
+        </h:inputText> <br/>
+    </div>
+    <h:commandButton value="Add Activity" action="#{beanManager.saveActivity()}"
+        styleClass="btn btn-primary">
+        <f:ajax execute="@all" render="@all" />
+    </h:commandButton>
+    </h:form>
+</body>
+</html>

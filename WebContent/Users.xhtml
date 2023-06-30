@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body>
+<h:form>
+	<h1>Users List :</h1>
+    <h:panelGroup>
+        <table class="table">
+                    <tr> 
+            	<td><h:outputText value="Id :" /></td>
+                    <td><h:outputText value="Surname :" /></td>
+                    <td><h:outputText value="Name :" /></td>
+                    <td><h:outputText value="Mail :" /></td>
+                    <td><h:outputText value="Birthday :" /></td>
+                    <td><h:outputText value="Site:" /></td>
+                    <td><h:outputText value="Delete User :" /></td>
+                    <td><h:outputText value="Modify UserActivity:" /></td>
+            	</tr>
+            <ui:repeat var="p" varStatus="s" value="#{beanManager.allUsers}">
+                <tr>
+                    <td><h:outputText value="#{p.id}" /></td>
+                    <td><h:outputText value="#{p.surname}" /></td>
+                    <td><h:outputText value="#{p.name}" /></td>
+                    <td><h:outputText value="#{p.mail}" /></td>
+                    <td><h:outputText value="#{p.naissance}" /></td>
+                    <td><h:outputText value="#{p.site}" /></td>
+                    <td><h:commandButton value="Delete"
+                            action="#{beanManager.deleteUser(p.id)}"
+                            styleClass="btn btn-success btn-xs">
+                            <f:ajax execute="@this" render="@form" />
+                        </h:commandButton></td>
+                        <td><h:commandButton value="Modify"
+                            action="#{beanManager.ModifyUser(p.id)}"
+                            styleClass="btn btn-success btn-xs">
+                            <f:ajax execute="@this" render="@form" />
+                        </h:commandButton></td>
+                </tr>
+            </ui:repeat>
+        </table>
+    </h:panelGroup>
+    <h:commandButton value="Add User"
+                            action="#{beanManager.newUser()}"
+                            styleClass="btn btn-success btn-xs">
+                            <f:ajax execute="@this" render="@form" />
+                        </h:commandButton>
+</h:form>
+</body>
+</html>

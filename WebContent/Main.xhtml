@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Login</title>
+</head>
+<body>
+    <h:form>
+        <h1>
+        	<h:outputLabel value="Mail :"/> <br/>
+        	<h:inputText id="mail" value="#{beanManager.themail}"/> <br/>
+        	<h:outputLabel value="Password :"/> <br/>
+            <h:inputSecret id="mdp" value="#{beanManager.themdp}"/> <br/>
+            <h:commandButton value="Login" action="#{beanManager.logged()}"/> <br/>
+            <h:outputLabel value="User List :  "/>
+            <h:commandButton value="Show" action="#{beanManager.showUsersVisit()}"/> <br/>
+            <h:outputLabel value="Activity List :  "/>
+            <h:commandButton value="Show" action="#{beanManager.showActivitiesVisit()}"/> <br/>
+            <h:messages/>
+        </h1>
+    </h:form>
+</body>
+</html>

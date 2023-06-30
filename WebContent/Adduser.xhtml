@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body>
+    <h:form>
+        <h1>User Form</h1>
+    <div class="form-group">
+    	<h:outputText value="Surname :" /> <br/>
+        <h:inputText id="surname" value="#{beanManager.surname}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="30" />
+        </h:inputText> <br/>
+        <h:outputText value="Name :" /> <br/>
+         <h:inputText id="name" value="#{beanManager.name}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="30" />
+        </h:inputText> <br/>
+        <h:outputText value="Mail :" /> <br/>
+         <h:inputText id="mail" value="#{beanManager.mail}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="30" />
+        </h:inputText> <br/>
+        <h:outputText value="Site :" /> <br/>
+         <h:inputText id="site" value="#{beanManager.site}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="30" />
+        </h:inputText> <br/>
+        <h:outputText value="Birthday :" /> <br/>
+         <h:inputText id="birthday" value="#{beanManager.naissance}"
+            styleClass="form-control">
+            <f:convertDateTime pattern="yy-MM-dd" />
+        </h:inputText> <br/>
+        <h:outputText value="Password :" /> <br/>
+         <h:inputText id="mdp" value="#{beanManager.mdp}"
+            styleClass="form-control">
+            <f:validateLength minimum="2" maximum="30" />
+        </h:inputText> <br/>
+    </div>
+    <h:commandButton value="Add User" action="#{beanManager.saveUser()}"
+        styleClass="btn btn-primary">
+        <f:ajax execute="@all" render="@all" />
+    </h:commandButton>
+    </h:form>
+</body>
+</html>
